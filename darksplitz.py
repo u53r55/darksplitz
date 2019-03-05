@@ -25,6 +25,7 @@ modul = '''
      maclookup               Mac address lookup
      maclookup_mass          Mass mac address lookup
      wayback                 Collecting url from web.archive.org
+     drkshell                Php web backdoor (Dark Shell)
 
      Exploit                 Description
      -------                 -----------
@@ -51,6 +52,7 @@ modul = '''
      vhost_scanner           Vhost scanner (bypass cloudflare)
      wpslug                  Mass bruteforce (wordpress)
      wpslug_file             Mass bruteforce (wordpress)
+     massping                Mass ping ip address
 '''
 
 class MyPrompt(Cmd):
@@ -231,6 +233,11 @@ class MyPrompt(Cmd):
         """[+] Mass bruteforce (wordpress)\n[!] exe : wpslug_file /root/target.txt"""
         from scanner.wpslug import wpslug_file
         wpslug_file(args, False)
+
+    def do_massping(self, args):
+        """[+] Mass ping ip address\n[!] exe : massping 1.1.1.0/24"""
+        from scanner.massping import massping
+        massping(args)
 
     def do_exit(self, args):
         print("[!] Exiting program...")
